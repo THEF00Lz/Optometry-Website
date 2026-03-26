@@ -17,13 +17,10 @@ body {
   background: #0b0f1a;
   background-image:url("nayok.jpg");
   background-size: cover;
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
   color: #e5e7eb;
   overflow-x: hidden;
 }
 
-/* NAVBAR */
 header {
   position: fixed;
   width: 100%;
@@ -47,7 +44,6 @@ nav a:hover {
   color: #60a5fa;
 }
 
-/* HERO */
 .hero {
   height: 100vh;
   position: relative;
@@ -69,6 +65,19 @@ nav a:hover {
   position: relative;
   animation: fadeUp 1.5s ease;
 }
+.research{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent-research{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
 
 .hero h2 {
   font-size: 80px;
@@ -86,6 +95,8 @@ nav a:hover {
   background: linear-gradient(135deg,#3b82f6,#2563eb);
   border-radius: 30px;
   transition: 0.3s;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .btn:hover {
@@ -93,7 +104,6 @@ nav a:hover {
   box-shadow: 0 0 25px rgba(59,130,246,0.6);
 }
 
-/* SECTION */
 section {
   padding: 140px 80px;
   opacity: 0;
@@ -112,7 +122,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* IMAGE GRID */
 .image-grid {
   display: flex;
   gap: 25px;
@@ -121,7 +130,7 @@ h2 {
 
 .img-box {
   width: 320px;
-  height: 200px; /* YOU control consistency here */
+  height: 200px;
   overflow: hidden;
   border-radius: 20px;
   position: relative;
@@ -130,7 +139,7 @@ h2 {
 .img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* THIS is what actually fills */
+  object-fit: cover;
   transition: 0.5s;
 }
 
@@ -145,27 +154,25 @@ h2 {
   background: linear-gradient(transparent, rgba(0,0,0,0.6));
 }
 
-/* VIDEO GRID */
 .video-grid {
-  display: flex;              /* you forgot this */
-  justify-content: center;    /* horizontal center */
-  align-items: center;        /* vertical (optional) */
-  min-height: 60vh;           /* gives space to center properly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
 }
 
 .video-box video {
   width: 820px;
-  display: block;             /* removes weird inline spacing */
+  display: block;
   border-radius: 20px;
   transition: 0.4s;
-  }
+}
 
-
-/* TEAM */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  justify-items: center;
 }
 
 .member {
@@ -180,44 +187,117 @@ h2 {
   box-shadow: 0 0 25px rgba(59,130,246,0.3);
 }
 
-/* FOOTER */
 footer {
   padding: 50px;
   text-align: center;
   color: #6b7280;
 }
 
-/* ANIMATIONS */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* MOBILE */
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  color: #6a56be;
+  animation: fadeUp 0.4s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.research {
+  margin: auto 0
+}
+
+
+.modal-close:hover {
+  color: #e5e7eb;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.modal-desc {
+  color: #9ca3af;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.modal-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.modal-card-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.modal-card p {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.modal-card ul {
+  color: #9ca3af;
+  font-size: 14px;
+  padding-left: 20px;
+  line-height: 2;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 16px 0;
+}
+
 @media(max-width:900px) {
-  .image-grid,
-  .video-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h2 {
-    font-size: 40px;
-  }
-
-  section {
-    padding: 100px 20px;
-  }
+  .image-grid, .video-grid { flex-direction: column; align-items: center; }
+  .team-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 40px; }
+  section { padding: 100px 20px; }
+  .video-box video { width: 100%; }
 }
 </style>
 </head>
@@ -236,21 +316,17 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="home">
-  
   <div class="hero-content">
     <h2>See Beyond Vision</h2>
     <p>Future of Eye Care • SEGi University</p>
-    <div class="btn">Explore</div>
+    <div class="btn" onclick="document.getElementById('exploreModal').classList.add('active')">Explore</div>
   </div>
 </section>
 
 <!-- IMAGES -->
 <section id="gallery">
   <h2>Campus & Facilities</h2>
-
   <div class="image-grid">
-    
-  
     <div class="img-box"><img src="equipment_1.jpeg"></div>
     <div class="img-box"><img src="equipment_2.jpeg"></div>
     <div class="img-box"><img src="equipment_3.jpeg"></div>
@@ -262,7 +338,6 @@ footer {
 <!-- VIDEOS -->
 <section id="videos">
   <h2>Insights & Experience</h2>
-
   <div class="video-grid">
     <div class="video-box">
       <video controls>
@@ -272,25 +347,79 @@ footer {
   </div>
 </section>
 
-
-
 <!-- TEAM -->
 <section id="team">
   <h2>Meet The Team</h2>
-
   <div class="team-grid">
-    <div class="M1"><h3>Lew Xuan Ting</h3><p>Script Writer & Researcher</p></div>
-    <div class="M2"><h3>Tan Pei Jun</h3><p>Team Leader</p></div>
-    <div class="M3"><h3>Shuvo, Xuan Ting</h3><p>Website Developer</p></div>
-    <div class="M4"><h3>Amir Ahmed Mohamed</h3><p>Researcher</p></div>
-    <div class="M5"><h3>Ahmed Jr</h3><p>Designer</p></div>
-    <div class="M6"><h3>Soo Wei Yun</h3><p>Editor</p></div>
+    <div class="member"><h1>Video Editing</h1>
+      <h3>Soo Wei Yun (SUKD 2501065)</h3>
+    </div>
+    <div class="member"><h1>Interview Planning</h1>
+      <h3>Tan Pei Jun (SUKD 2501215)</h3>
+      <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+      <h3>Soo Wei Yun (SUKD 2501065)</h3>
+    </div>
+    <div class="member"><h1>Website Creator</h1>
+      <h3>Shemanto Islam Shuvo (SUKD 2501319)</h3>
+      <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+    </div>
+    <div class="member"><h1>Video Record</h1>
+      <h3>Ahmed Amir (SUKD 2502117)</h3>
+      <h3>Soo Wei Yun (SUKD 2501065)</h3>
+    </div>
+    <div class="member"><h1>Interview Execution</h1>
+      <h3>Ahmed Abdelsalam (SUKD 2502009)</h3>
+      <h3>Tan Pei Jun (SUKD 2501215)</h3>
+    </div>
+    <div class="member"><h1>Content Collection</h1>
+      <h3>Soo Wei Yun (SUKD 2501065)</h3>
+      <h3>Tan Pei Jun (SUKD 2501215)</h3>
+    </div>    
   </div>
+  <div class="parent-research">
+ <div class="research"><h1>Core Research</h1>
+      <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+      <h3>Tan Pei Jun (SUKD 2501215)</h3>
+      <h3>Ahmed Amir (SUKD 2502117)</h3>
+    </div>
+    </div>
 </section>
 
 <footer>
   © 2026 Optometry Program
 </footer>
+
+<!-- EXPLORE MODAL -->
+<div id="exploreModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('exploreModal').classList.remove('active')">✕</button>
+
+    <div class="modal-title">👁 What is Optometry?</div>
+    <p class="modal-desc">Optometry is a healthcare field that focuses on examining the eye, dealing with vision problems and managing eye health.</p>
+
+    <div class="modal-card">
+      <div class="modal-card-title">🎓 SEGi University — 4-Year Programme</div>
+      <p>Admission requirements for foundation students:</p>
+      <ul>
+        <li>CGPA 2.33 and above</li>
+        <li>Passing three of: Physics, Chemistry, Biology, Mathematics</li>
+      </ul>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-card">
+      <div class="modal-card-title">📈 Market Relevance</div>
+      <ul>
+        <li>Global demand rising due to increased device usage & ageing population</li>
+        <li>AI advancements are enhancing diagnostic accuracy</li>
+        <li>Industry continuously upgrading eyewear features and quality</li>
+        <li>Strong future prospects with sustained market demand</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
 
 <script>
 const sections = document.querySelectorAll("section");
