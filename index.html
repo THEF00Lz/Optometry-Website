@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optometry Program</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background: #0b0f1a;
+  background-image:url("images/nayok.jpg");
+  background-size: cover;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(10,15,30,0.7);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #9ca3af;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #60a5fa;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.hero-content {
+  position: relative;
+  animation: fadeUp 1.5s ease;
+}
+
+.hero h2 {
+  font-size: 80px;
+  letter-spacing: -2px;
+}
+
+.hero p {
+  margin-top: 10px;
+  color: #cbd5f5;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 14px 30px;
+  background: linear-gradient(135deg,#3b82f6,#2563eb);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(59,130,246,0.6);
+}
+
+/* SECTION */
+section {
+  padding: 140px 80px;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: 1s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* IMAGE GRID */
+.image-grid {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.img-box {
+  width: 320px;
+  height: 200px; /* YOU control consistency here */
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* THIS is what actually fills */
+  transition: 0.5s;
+}
+
+.img-box:hover img {
+  transform: scale(1.1);
+}
+
+.img-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+}
+
+/* VIDEO GRID */
+.video-grid {
+  display: flex;              /* you forgot this */
+  justify-content: center;    /* horizontal center */
+  align-items: center;        /* vertical (optional) */
+  min-height: 60vh;           /* gives space to center properly */
+}
+
+.video-box video {
+  width: 820px;
+  display: block;             /* removes weird inline spacing */
+  border-radius: 20px;
+  transition: 0.4s;
+  }
+
+
+/* TEAM */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.member {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.member:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 0 25px rgba(59,130,246,0.3);
+}
+
+/* FOOTER */
+footer {
+  padding: 50px;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+  .image-grid,
+  .video-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 40px;
+  }
+
+  section {
+    padding: 100px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Optometry</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#videos">Videos</a>
+    <a href="#team">Team</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  
+  <div class="hero-content">
+    <h2>See Beyond Vision</h2>
+    <p>Future of Eye Care • SEGi University</p>
+    <div class="btn">Explore</div>
+  </div>
+</section>
+
+<!-- IMAGES -->
+<section id="gallery">
+  <h2>Campus & Facilities</h2>
+
+  <div class="image-grid">
+    
+  
+    <div class="img-box"><img src="images/equipment_1.jpeg"></div>
+    <div class="img-box"><img src="images/equipment_2.jpeg"></div>
+    <div class="img-box"><img src="images/equipment_3.jpeg"></div>
+    <div class="img-box"><img src="images/equipment_4.jpeg"></div>
+    <div class="img-box"><img src="images/equipment_5.jpeg"></div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <h2>Insights & Experience</h2>
+
+  <div class="video-grid">
+    <div class="video-box">
+      <video controls>
+        <source src="videos/interview.mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TEAM -->
+<section id="team">
+  <h2>Meet The Team</h2>
+
+  <div class="team-grid">
+    <div class="M1"><h3>Lew Xuan Ting</h3><p>Script Writer & Researcher</p></div>
+    <div class="M2"><h3>Tan Pei Jun</h3><p>Team Leader</p></div>
+    <div class="M3"><h3>Shemanto Islam Shuvo</h3><p>Website Developer</p></div>
+    <div class="M4"><h3>Amir Ahmed Mohamed</h3><p>Researcher</p></div>
+    <div class="M5"><h3>Ahmed Jr</h3><p>Designer</p></div>
+    <div class="M6"><h3>Soo Wei Yun</h3><p>Editor</p></div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Optometry Program
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
