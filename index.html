@@ -1,445 +1,678 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Optometry Program</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optometry Program</title>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-body {
-  background: #0b0f1a;
-  background-image:url("nayok.jpg");
-  background-size: cover;
-  color: #e5e7eb;
-  overflow-x: hidden;
-}
+    body {
+      background: #0b0f1a;
+      background-image: url("nayok.jpg");
+      background-size: cover;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
 
-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  background: rgba(10,15,30,0.7);
-  backdrop-filter: blur(15px);
-  z-index: 1000;
-}
-.footer{
-  color:#000000
-}
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+    }
 
-nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  color: #9ca3af;
-  transition: 0.3s;
-}
+    .footer {
+      color: #000000
+    }
 
-nav a:hover {
-  color: #60a5fa;
-}
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #9ca3af;
+      transition: 0.3s;
+    }
 
-.hero {
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+    nav a:hover {
+      color: #60a5fa;
+    }
 
-.hero video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5);
-}
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-.hero-content {
-  position: relative;
-  animation: fadeUp 1.5s ease;
-}
-.research{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    .hero video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
 
-.parent-research{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 24px;
-}
+    .hero-content {
+      position: relative;
+      animation: fadeUp 1.5s ease;
+    }
 
-.hero h2 {
-  font-size: 80px;
-  letter-spacing: -2px;
-}
+    .research {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-.hero p {
-  margin-top: 10px;
-  color: #cbd5f5;
-}
+    .parent-research {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
 
-.btn {
-  margin-top: 25px;
-  padding: 14px 30px;
-  background: linear-gradient(135deg,#3b82f6,#2563eb);
-  border-radius: 30px;
-  transition: 0.3s;
-  cursor: pointer;
-  display: inline-block;
-}
+    .hero h2 {
+      font-size: 80px;
+      letter-spacing: -2px;
+    }
 
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(59,130,246,0.6);
-}
+    .hero p {
+      margin-top: 10px;
+      color: #cbd5f5;
+    }
 
-section {
-  padding: 140px 80px;
-  opacity: 0;
-  transform: translateY(80px);
-  transition: 1s;
-}
+    .btn {
+      margin-top: 25px;
+      padding: 14px 30px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: 30px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: inline-block;
+    }
 
-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+    }
 
-h2 {
-  font-size: 42px;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    section {
+      padding: 140px 80px;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: 1s;
+    }
 
-.image-grid {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-}
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.img-box {
-  width: 320px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 20px;
-  position: relative;
-}
+    h2 {
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-.img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.5s;
-}
+    .image-grid {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+    }
 
-.img-box:hover img {
-  transform: scale(1.1);
-}
+    .img-box {
+      width: 320px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative;
+    }
 
-.img-box::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.6));
-}
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
 
-.video-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-}
+    .img-box:hover img {
+      transform: scale(1.1);
+    }
 
-.video-box video {
-  width: 820px;
-  display: block;
-  border-radius: 20px;
-  transition: 0.4s;
-}
+    .img-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  justify-items: center;
-}
+    .video-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60vh;
+    }
 
-.member {
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 20px;
-  transition: 0.4s;
-}
+    .video-box video {
+      width: 820px;
+      display: block;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
 
-.member:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 0 25px rgba(59,130,246,0.3);
-}
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
 
-footer {
-  padding: 50px;
-  text-align: center;
-  color: #9ca3af;
-}
+    .member {
+      background: linear-gradient(145deg, rgba(30, 41, 70, 0.85), rgba(15, 23, 42, 0.75));
+      border: 1px solid rgba(96, 165, 250, 0.15);
+      padding: 28px 30px 26px;
+      border-radius: 20px;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(60px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    .member::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    }
 
-/* MODAL */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+    .member:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(96, 165, 250, 0.3);
+      border-color: rgba(96, 165, 250, 0.35);
+    }
 
-.modal-overlay.active {
-  display: flex;
-}
+    .member-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+      display: block;
+    }
 
-.modal-box {
-  background: #111827;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 720px;
-  width: 100%;
-  position: relative;
-  color: #6a56be;
-  animation: fadeUp 0.4s ease;
-}
+    .member h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #e5e7eb;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
 
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: #9ca3af;
-  font-size: 22px;
-  cursor: pointer;
-  line-height: 1;
-}
+    .member-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 14px;
+    }
 
-.research {
-  margin: auto 0
-}
+    .member h3 {
+      font-size: 13px;
+      font-weight: 400;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 2px solid rgba(96, 165, 250, 0.45);
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 50px;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 720px;
+      width: 100%;
+      position: relative;
+      color: #6a56be;
+      animation: fadeUp 0.4s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #9ca3af;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .research {
+      margin: auto 0
+    }
 
 
-.modal-close:hover {
-  color: #e5e7eb;
-}
+    .modal-close:hover {
+      color: #e5e7eb;
+    }
 
-.modal-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-.modal-desc {
-  color: #9ca3af;
-  line-height: 1.7;
-  margin-bottom: 24px;
-  font-size: 15px;
-}
+    .modal-desc {
+      color: #9ca3af;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
 
-.modal-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 14px;
-  padding: 18px 20px;
-  margin-bottom: 16px;
-}
+    .modal-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
 
-.modal-card-title {
-  font-weight: 600;
-  font-size: 15px;
-  margin-bottom: 8px;
-}
+    .modal-card-title {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
 
-.modal-card p {
-  color: #9ca3af;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
+    .modal-card p {
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
 
-.modal-card ul {
-  color: #9ca3af;
-  font-size: 14px;
-  padding-left: 20px;
-  line-height: 2;
-}
+    .modal-card ul {
+      color: #9ca3af;
+      font-size: 14px;
+      padding-left: 20px;
+      line-height: 2;
+    }
 
-.modal-divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin: 16px 0;
-}
+    .modal-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 16px 0;
+    }
 
-@media(max-width:900px) {
-  .image-grid, .video-grid { flex-direction: column; align-items: center; }
-  .team-grid { grid-template-columns: 1fr; }
-  .hero h2 { font-size: 40px; }
-  section { padding: 100px 20px; }
-  .video-box video { width: 100%; }
-}
-</style>
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .swot-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
+
+    .swot-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+    }
+
+    .swot-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .swot-card p {
+      color: #9ca3af;
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    .swot-card ul {
+      color: #9ca3af;
+      font-size: 14px;
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    .swot-card .swot-sub {
+      font-weight: 600;
+      color: #93c5fd;
+      font-size: 13px;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+
+    @media(max-width:900px) {
+
+      .swot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .image-grid,
+      .video-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 40px;
+      }
+
+      section {
+        padding: 100px 20px;
+      }
+
+      .video-box video {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Optometry</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#videos">Videos</a>
-    <a href="#team">Team</a>
-  </nav>
-</header>
+  <header>
+    <h1>Optometry</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#videos">Videos</a>
+      <a href="#swot">SWOT</a>
+      <a href="#team">Team</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h2>See Beyond Vision</h2>
-    <p>Future of Eye Care • SEGi University</p>
-    <div class="btn" onclick="document.getElementById('exploreModal').classList.add('active')">Explore</div>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>See Beyond Vision</h2>
+      <p>Future of Eye Care • SEGi University</p>
+      <div class="btn" onclick="document.getElementById('exploreModal').classList.add('active')">Explore</div>
+    </div>
+  </section>
 
-<!-- IMAGES -->
-<section id="gallery">
-  <h2>Campus & Facilities</h2>
-  <div class="image-grid">
-    <div class="img-box"><img src="equipment_1.jpeg"></div>
-    <div class="img-box"><img src="equipment_2.jpeg"></div>
-    <div class="img-box"><img src="equipment_3.jpeg"></div>
-    <div class="img-box"><img src="equipment_4.jpeg"></div>
-    <div class="img-box"><img src="equipment_5.jpeg"></div>
-  </div>
-</section>
+  <!-- IMAGES -->
+  <section id="gallery">
+    <h2>Campus & Facilities</h2>
+    <div class="image-grid">
+      <div class="img-box"><img src="equipment_1.jpeg"></div>
+      <div class="img-box"><img src="equipment_2.jpeg"></div>
+      <div class="img-box"><img src="equipment_3.jpeg"></div>
+      <div class="img-box"><img src="equipment_4.jpeg"></div>
+      <div class="img-box"><img src="equipment_5.jpeg"></div>
+    </div>
+  </section>
 
-<!-- VIDEOS -->
-<section id="videos">
-  <h2>Insights & Experience</h2>
-  <div class="video-grid">
-    <div class="video-box">
-      <video controls>
-        <source src="interview.mp4">
-      </video>
+  <!-- VIDEOS -->
+  <section id="videos">
+    <h2>Insights & Experience</h2>
+    <div class="video-grid">
+      <div class="video-box">
+        <video controls>
+          <source src="interview.mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- SWOT -->
+  <section id="swot">
+    <h2>SWOT Analysis</h2>
+    <div class="swot-grid">
+
+      <!-- Strength -->
+      <div class="swot-card">
+        <div class="swot-card-title">💪 Strength</div>
+        <p>The bachelor of optometry programme provides many strengths particularly going hand in hand with AI.
+          Artificial intelligence is being involved in the optometry field with OCT (optical coherence tomography), and
+          its retinal imaging allows it to enhance accuracy in detecting diseases such as glaucoma.</p>
+        <p>With the rise of AI in this industry, some may think that the industry market will decline; however, with the
+          aging population and the increasing screen time of our youth, the industry continues to be in high demand as
+          age-related eye conditions such as cataracts and the screen time-fatigue eye conditions such as myopia and dry
+          eye syndrome increase.</p>
+        <p>Therefore, the strengths of optometry also show clearly that the community nowadays needs a complete and
+          professional eye test to ensure optimal eye health, which increases high career opportunity for optometrists.
+          Besides, according to the lecturer of optometry, he had high expectations for optometry, as nowadays the
+          retail shops of optics had opened everywhere, and as an optometrist, retail shops are also career
+          opportunities.</p>
+        <p>Employment for optometrists is expected to grow by 10% from 2021 to 2031, which is a higher average compared
+          to other professions.</p>
+      </div>
+
+      <!-- Weakness -->
+      <div class="swot-card">
+        <div class="swot-card-title">⚠️ Weakness</div>
+        <p>Despite the growing number of graduates, the Malaysian optometrist to population ratio stands at
+          approximately 1:15,147, which is short of the World Council of Optometry's ideal ratio of 1:10,000.</p>
+        <p>However, the weakness of optometry is also quite evident. Optometry does not have a universally recognized
+          certification for international practice. For example, in the accounting profession, individuals can use ACCA
+          (Association of Chartered Certified Accountants) to apply for international jobs. In contrast, optometrists
+          who wish to work abroad are required to obtain a license specific to each country.</p>
+        <p>This situation leads to highly competitive career opportunities in optometry because students are often
+          limited to working in Malaysia.</p>
+      </div>
+
+      <!-- Opportunity -->
+      <div class="swot-card">
+        <div class="swot-card-title">🚀 Opportunity</div>
+        <p>Entering the bachelor of optometry opens several doors of opportunities for graduate students such as:</p>
+        <div class="swot-sub">Career Opportunities</div>
+        <p>Graduates are able to be a part of many sectors of optometry:</p>
+        <ul>
+          <li>Ophthalmic lens laboratories</li>
+          <li>Optical industry representatives</li>
+          <li>Private optometry / opticianry or ophthalmology practice</li>
+          <li>Public sector hospitals</li>
+          <li>Dedicated private sector eye clinics</li>
+          <li>Educational institutions</li>
+        </ul>
+        <div class="swot-sub">Early Clinical Exposure</div>
+        <p>Clinical training begins early, utilizing the on-campus "SEGi EyeCare" center and affiliated hospitals or
+          clinics, providing hands-on experience with modern equipment.</p>
+        <div class="swot-sub">Industry Relevant Curriculum</div>
+        <p>The 4-year degree includes training in binocular vision, contact lenses, and ocular pathology.</p>
+        <div class="swot-sub">Experienced Faculty</div>
+        <p>Learning is facilitated by registered optometrists, ophthalmologists, and biomedical scientists, enhancing
+          the clinical focus.</p>
+      </div>
+
+      <!-- Threat -->
+      <div class="swot-card">
+        <div class="swot-card-title">🔴 Threat</div>
+        <p>While the programme provides many opportunities, there are also many risks involved such as:</p>
+        <div class="swot-sub">Public Misperception</div>
+        <p>A wall that many optometrists face is the lack of public awareness regarding the difference between an
+          optometrist (primary eye care professional) and an optician (dispenser of spectacles). This can lead to the
+          undervaluation of clinical expertise in retail settings.</p>
+        <div class="swot-sub">Retail Competition &amp; Online Sales</div>
+        <p>The rise of unregulated online cosmetic contact lens sales poses both a public health risk and a commercial
+          threat to traditional practices. The upcoming Optometry Bill aims to regulate this, but digital competition
+          remains strong.</p>
+        <div class="swot-sub">Workforce Shortage vs. Distribution</div>
+        <p>While there is an overall shortage of optometrists in Malaysia (1:16,000 ratio vs. the WHO's ideal 1:10,000),
+          most professionals are concentrated in urban areas, leading to high competition in cities and gaps in rural
+          regions.</p>
+        <div class="swot-sub">Institutional Recognition</div>
+        <p>Optometrists often report a lack of adequate support and recognition from financial bodies and the government
+          when trying to implement advanced Primary Eye Care (PEC) services in private practice.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <h2>Meet The Team</h2>
+    <div class="team-grid">
+      <div class="member">
+        <span class="member-icon">🎬</span>
+        <h1>Video Editing</h1>
+        <hr class="member-divider">
+        <h3>Soo Wei Yun (SUKD 2501065)</h3>
+      </div>
+      <div class="member">
+        <span class="member-icon">📋</span>
+        <h1>Interview Planning</h1>
+        <hr class="member-divider">
+        <h3>Tan Pei Jun (SUKD 2501215)</h3>
+        <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+        <h3>Soo Wei Yun (SUKD 2501065)</h3>
+      </div>
+      <div class="member">
+        <span class="member-icon">💻</span>
+        <h1>Website Creator</h1>
+        <hr class="member-divider">
+        <h3>Shemanto Islam Shuvo (SUKD 2501319)</h3>
+        <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+      </div>
+      <div class="member">
+        <span class="member-icon">📹</span>
+        <h1>Video Record</h1>
+        <hr class="member-divider">
+        <h3>Ahmed Amir (SUKD 2502117)</h3>
+        <h3>Soo Wei Yun (SUKD 2501065)</h3>
+      </div>
+      <div class="member">
+        <span class="member-icon">🎤</span>
+        <h1>Interview Execution</h1>
+        <hr class="member-divider">
+        <h3>Ahmed Abdelsalam (SUKD 2502009)</h3>
+        <h3>Tan Pei Jun (SUKD 2501215)</h3>
+      </div>
+      <div class="member">
+        <span class="member-icon">📚</span>
+        <h1>Content Collection</h1>
+        <hr class="member-divider">
+        <h3>Soo Wei Yun (SUKD 2501065)</h3>
+        <h3>Tan Pei Jun (SUKD 2501215)</h3>
+      </div>
+    </div>
+    <div class="parent-research">
+      <div class="member" style="width: 320px; text-align: center;">
+        <span class="member-icon">🔬</span>
+        <h1>Core Research</h1>
+        <hr class="member-divider">
+        <h3>Lew Xuan Ting (SUKD 2502200)</h3>
+        <h3>Tan Pei Jun (SUKD 2501215)</h3>
+        <h3>Ahmed Amir (SUKD 2502117)</h3>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    ©️ 2026 Optometry Program
+    <p style="margin-top: 10px; font-size: 12px; color: #e5e7eb; font-style: italic;">
+      A note of disclaimer: SEGi will not be responsible for the external content as they may be removed by the content
+      owner without prior notice.
+    </p>
+  </footer>
+
+  <!-- EXPLORE MODAL -->
+  <div id="exploreModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <button class="modal-close"
+        onclick="document.getElementById('exploreModal').classList.remove('active')">✕</button>
+
+      <div class="modal-title">👁 What is Optometry?</div>
+      <p class="modal-desc">Optometry is a healthcare field that focuses on examining the eye, dealing with vision
+        problems and managing eye health.</p>
+
+      <div class="modal-card">
+        <div class="modal-card-title">🎓 SEGi University — 4-Year Programme</div>
+        <p>Admission requirements for foundation students:</p>
+        <ul>
+          <li>CGPA 2.33 and above</li>
+          <li>Passing three of: Physics, Chemistry, Biology, Mathematics</li>
+        </ul>
+      </div>
+
+      <hr class="modal-divider">
+
+      <div class="modal-card">
+        <div class="modal-card-title">📈 Market Relevance</div>
+        <ul>
+          <li>Global demand rising due to increased device usage & aging population</li>
+          <li>AI advancements are enhancing diagnostic accuracy</li>
+          <li>Industry continuously upgrading eyewear features and quality</li>
+          <li>Strong future prospects with sustained market demand</li>
+        </ul>
+      </div>
+
     </div>
   </div>
-</section>
 
-<!-- TEAM -->
-<section id="team">
-  <h2>Meet The Team</h2>
-  <div class="team-grid">
-    <div class="member"><h1>Video Editing</h1>
-      <h3>Soo Wei Yun (SUKD 2501065)</h3>
-    </div>
-    <div class="member"><h1>Interview Planning</h1>
-      <h3>Tan Pei Jun (SUKD 2501215)</h3>
-      <h3>Lew Xuan Ting (SUKD 2502200)</h3>
-      <h3>Soo Wei Yun (SUKD 2501065)</h3>
-    </div>
-    <div class="member"><h1>Website Creator</h1>
-      <h3>Shemanto Islam Shuvo (SUKD 2501319)</h3>
-      <h3>Lew Xuan Ting (SUKD 2502200)</h3>
-    </div>
-    <div class="member"><h1>Video Record</h1>
-      <h3>Ahmed Amir (SUKD 2502117)</h3>
-      <h3>Soo Wei Yun (SUKD 2501065)</h3>
-    </div>
-    <div class="member"><h1>Interview Execution</h1>
-      <h3>Ahmed Abdelsalam (SUKD 2502009)</h3>
-      <h3>Tan Pei Jun (SUKD 2501215)</h3>
-    </div>
-    <div class="member"><h1>Content Collection</h1>
-      <h3>Soo Wei Yun (SUKD 2501065)</h3>
-      <h3>Tan Pei Jun (SUKD 2501215)</h3>
-    </div>    
-  </div>
- <div class="parent-research">
-  <div class="member" style="width: 320px; text-align: center;">
-    <h1>Core Research</h1>
-    <h3>Lew Xuan Ting (SUKD 2502200)</h3>
-    <h3>Tan Pei Jun (SUKD 2501215)</h3>
-    <h3>Ahmed Amir (SUKD 2502117)</h3>
-  </div>
-</div>
-</section>
+  <script>
+    const sections = document.querySelectorAll("section");
 
-<footer>
-  © 2026 Optometry Program
-  <p style="margin-top: 10px; font-size: 12px; color: #e5e7eb; font-style: italic;">
-    A note of disclaimer: SEGi will not be responsible for the external content as they may be removed by the content owner without prior notice.
-  </p>
-</footer>
-
-<!-- EXPLORE MODAL -->
-<div id="exploreModal" class="modal-overlay" onclick="if(event.target===this)this.classList.remove('active')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('exploreModal').classList.remove('active')">✕</button>
-
-    <div class="modal-title">👁 What is Optometry?</div>
-    <p class="modal-desc">Optometry is a healthcare field that focuses on examining the eye, dealing with vision problems and managing eye health.</p>
-
-    <div class="modal-card">
-      <div class="modal-card-title">🎓 SEGi University — 4-Year Programme</div>
-      <p>Admission requirements for foundation students:</p>
-      <ul>
-        <li>CGPA 2.33 and above</li>
-        <li>Passing three of: Physics, Chemistry, Biology, Mathematics</li>
-      </ul>
-    </div>
-
-    <hr class="modal-divider">
-
-    <div class="modal-card">
-      <div class="modal-card-title">📈 Market Relevance</div>
-      <ul>
-        <li>Global demand rising due to increased device usage & aging population</li>
-        <li>AI advancements are enhancing diagnostic accuracy</li>
-        <li>Industry continuously upgrading eyewear features and quality</li>
-        <li>Strong future prospects with sustained market demand</li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
-<script>
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
-});
-</script>
+    window.addEventListener("scroll", () => {
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add("show");
+        }
+      });
+    });
+  </script>
 
 </body>
+
 </html>
